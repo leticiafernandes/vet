@@ -2,7 +2,8 @@
   "name": "vet",
   "private": true,
   "scripts": {
-    "format": "prettier \"app/**/**/*.{js,html}\" --write"
+    "format": "prettier \"app/javascript/**/*.{js,html}\" --write",
+    "lint": "eslint \"app/javascript/**/*.{js,jsx}\" --quiet"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -12,11 +13,19 @@
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
     "prettier": "^2.0.5",
     "webpack-dev-server": "^3.11.0"
   }
