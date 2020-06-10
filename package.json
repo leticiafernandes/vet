@@ -5,6 +5,9 @@
     "format": "prettier \"app/javascript/**/*.{js,html}\" --write",
     "lint": "eslint \"app/javascript/**/*.{js,jsx}\" --quiet"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "@babel/preset-react": "^7.10.1",
     "@rails/actioncable": "^6.0.0",
@@ -28,6 +31,7 @@
     "eslint-plugin-import": "^2.21.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.0.5",
     "webpack-dev-server": "^3.11.0"
   }

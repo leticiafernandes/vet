@@ -3,7 +3,7 @@ import React from "react";
 import { render } from "react-dom";
 //boostratp
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
+import $ from 'jquery'; // eslint-disable-line
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 //components
 import App from "../components/App";

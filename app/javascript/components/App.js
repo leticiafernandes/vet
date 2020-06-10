@@ -1,7 +1,7 @@
 import React from "react";
 import Index from "../routes/Index";
 
-const App = (props) => (
+const App = () => (
     <Index />
 );
 
