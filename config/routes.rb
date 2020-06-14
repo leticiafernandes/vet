@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :animal do
-      get 'index'
-      post 'create'
+      get 'index', to: 'animals#index'
+      post 'create', to: 'animals#create'
       get '/show/:id', to: 'animals#show'
       get '/destroy/:id', to: 'animals#destroy'
     end
