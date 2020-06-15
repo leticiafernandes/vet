@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Animal, :type => :model do
     before do
-        @animal = Animal.new(name: "luna", birth: "2008-07-09", species: "dog", breed: "cocker")
+        @animal = build(:animal)
     end
 
     it "is valid with attributes" do
