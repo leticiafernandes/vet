@@ -3,10 +3,12 @@
   "private": true,
   "scripts": {
     "format": "prettier \"app/javascript/**/*.{js,html}\" --write",
-    "lint": "eslint \"app/javascript/**/*.{js,jsx}\" --quiet"
+    "lint": "eslint \"app/javascript/**/*.{js,jsx}\" --quiet",
+    "tests_api": "rspec"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "tests_api"
   ],
   "dependencies": {
     "@babel/preset-react": "^7.10.1",
