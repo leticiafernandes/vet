@@ -28,4 +28,16 @@ RSpec.describe Api::Animal::AnimalsController, :type => :controller do
             expect { post :create, params: animal }.to raise_error(ActiveRecord::RecordInvalid)
         end
     end
+
+    describe "GET requests" do
+        it "find existing animal with success" do
+            animal = create(:animal)
+            get :show, params: { id: animal.id }
+            expect(response.body).not_to be_empty
+        end
+
+        it "throw error when animal doesnt exist" do
+            expect { get :show, params: { id: -1 } }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+    end
 end
