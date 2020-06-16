@@ -13,6 +13,11 @@ class Api::Animal::AnimalsController < ApplicationController
   end
 
   def show
+    if animal
+      render json: animal
+    else
+      render animal.errors
+    end
   end
 
   def destroy
@@ -22,5 +27,9 @@ class Api::Animal::AnimalsController < ApplicationController
 
   def animal_params
     params.permit(:name, :birth, :species, :breed)
+  end
+
+  def animal
+    @animal ||= Animal.find(params[:id])
   end
 end
