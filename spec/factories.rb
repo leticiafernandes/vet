@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :animal do
         name { "luna" }
-        birth { Date.new }
+        birth { "2005-01-01" }
         species { "dog" }
         breed { "cocker" }
     end
