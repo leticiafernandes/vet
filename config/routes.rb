@@ -4,7 +4,8 @@ Rails.application.routes.draw do
       get 'index', to: 'animals#index'
       post 'create', to: 'animals#create'
       get '/show/:id', to: 'animals#show'
-      get '/destroy/:id', to: 'animals#destroy'
+      delete '/destroy/:id', to: 'animals#destroy'
+      put '/update/:id', to: 'animals#update'
     end
   end
   root 'home#index'
