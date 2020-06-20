@@ -39,12 +39,17 @@ RSpec.describe Api::Tutor::TutorsController, type: :controller do
     end
   end
 
-  # describe "GET /show" do
-  #   it "returns http success" do
-  #     get "/api/tutor/tutors/show"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET #show" do
+    it "find existing tutor with success" do
+      get :show, params: { id: tutor.id }
+      expect(response.body).not_to be_empty
+    end
+
+    it "throw error when tutor does not exist" do
+      tutor.id = -1
+      expect { get :show, params: { id: tutor.id } }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 
   # describe "GET /update" do
   #   it "returns http success" do
