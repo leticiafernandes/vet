@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'date'
 
-RSpec.describe Api::Animal::AnimalsController, :type => :controller do
+RSpec.describe Api::Animal::AnimalsController, type: :controller do
     let(:animal) { create(:animal) }
     let(:attrs_animal) { attributes_for(:animal) }
 
@@ -20,6 +20,7 @@ RSpec.describe Api::Animal::AnimalsController, :type => :controller do
     describe "POST #create" do 
         it "create animal successfully with valid attributes" do
             post :create, params: attrs_animal
+            expect(response.body).to_not be_empty
             expect(response).to have_http_status(:ok)
         end
 
