@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
 
     namespace :tutor do
-      get 'index', to: 'tutors:index'
+      get 'index', to: 'tutors#index'
       post 'create', to: 'tutors#create'
       get '/show/:id', to: 'tutors#show'
       delete '/destroy/:id', to: 'tutors#destroy'
