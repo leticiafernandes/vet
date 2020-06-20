@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Animal, :type => :model do
+RSpec.describe Animal, type: :model do
     let(:animal) { create(:animal) }
 
     it "is valid with attributes" do
