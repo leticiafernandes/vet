@@ -28,6 +28,13 @@ class Api::Tutor::TutorsController < ApplicationController
   end
 
   def update
+    tutor.update!(tutor_params)
+
+    if tutor
+      render json: tutor
+    else
+      render json: tutor.errors
+    end
   end
 
   private
