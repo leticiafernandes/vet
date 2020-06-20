@@ -51,18 +51,22 @@ RSpec.describe Api::Tutor::TutorsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "destroy existing tutor" do
+      delete :destroy, params: { id: tutor.id }
+      expect(response.body).to eq('{"message":"tutor deleted!"}')
+    end
+
+    it "throw error when tutor doesnt exist" do
+      tutor.id = -1
+      expect { delete :destroy, params: { id: tutor.id } }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
   # describe "GET /update" do
   #   it "returns http success" do
   #     get "/api/tutor/tutors/update"
   #     expect(response).to have_http_status(:success)
   #   end
   # end
-
-  # describe "GET /destroy" do
-  #   it "returns http success" do
-  #     get "/api/tutor/tutors/destroy"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
 end
