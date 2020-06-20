@@ -1,5 +1,7 @@
 class Api::Tutor::TutorsController < ApplicationController
   def index
+    tutors = Tutor.all.order(created_at: :desc)
+    render json: tutors
   end
 
   def create
