@@ -13,6 +13,11 @@ class Api::Tutor::TutorsController < ApplicationController
   end
 
   def show
+    if tutor 
+      render json: tutor
+    else 
+      render json: tutor.errors
+    end
   end
 
   def destroy
@@ -25,5 +30,9 @@ class Api::Tutor::TutorsController < ApplicationController
 
   def tutor_params
     params.permit(:name, :identification, :email, :phone)
+  end
+
+  def tutor
+    @tutor ||= Tutor.find(params[:id])
   end
 end
