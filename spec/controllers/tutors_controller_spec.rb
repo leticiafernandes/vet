@@ -4,12 +4,13 @@ RSpec.describe Api::Tutor::TutorsController, type: :controller do
   let(:tutor) { create(:tutor) }
   let(:attrs_tutor) { attributes_for(:tutor) }
 
-  # describe "GET /index" do
-  #   it "returns http success" do
-  #     get "/api/tutor/tutors/index"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET #index" do
+    it "find all tutors" do
+      get :index
+      expect(response.body).to_not be_empty
+      expect(response).to have_http_status(:ok)
+    end
+  end
 
   describe "POST #create" do
     it "create tutor successfully with valid attributes" do
