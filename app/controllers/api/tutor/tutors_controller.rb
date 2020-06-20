@@ -21,6 +21,8 @@ class Api::Tutor::TutorsController < ApplicationController
   end
 
   def destroy
+    tutor&.destroy
+    render json: { message: 'tutor deleted!' }
   end
 
   def update
