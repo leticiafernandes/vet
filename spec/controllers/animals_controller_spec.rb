@@ -57,7 +57,7 @@ RSpec.describe Api::Animal::AnimalsController, type: :controller do
         end
     end
 
-    describe "GET #destroy" do
+    describe "DELETE #destroy" do
         it "destroy existing animal" do
             delete :destroy, params: { id: animal.id }
             expect(response.body).to eq('{"message":"animal deleted!"}')
