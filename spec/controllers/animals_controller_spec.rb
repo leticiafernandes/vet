@@ -1,13 +1,10 @@
 require 'rails_helper'
+require 'utils'
 require 'date'
 
 RSpec.describe Api::Animal::AnimalsController, type: :controller do
     let(:animal) { create(:animal) }
     let(:attrs_animal) { attributes_for(:animal) }
-
-    def get_value_from_json(key)
-        JSON.parse(response.body)[key]
-    end
 
     describe "GET #index" do
         it "find all animals" do
