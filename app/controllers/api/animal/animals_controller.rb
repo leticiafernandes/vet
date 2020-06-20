@@ -28,7 +28,6 @@ class Api::Animal::AnimalsController < ApplicationController
   end
 
   def update
-    animal = Animal.find(params[:id])
     animal.update!(animal_params)
 
     if animal
