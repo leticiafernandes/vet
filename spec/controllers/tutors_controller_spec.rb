@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'utils'
 
 RSpec.describe Api::Tutor::TutorsController, type: :controller do
   let(:tutor) { create(:tutor) }
@@ -64,10 +65,25 @@ RSpec.describe Api::Tutor::TutorsController, type: :controller do
     end
   end
 
-  # describe "GET /update" do
-  #   it "returns http success" do
-  #     get "/api/tutor/tutors/update"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "PUT #update" do
+    it "update tutor name with success" do
+      put :update, params: { id: tutor.id, name: "new name" }
+      expect(get_value_from_json("name")).to_not eql(tutor.name)
+    end
+
+    it "update tutor identification with success" do
+      put :update, params: { id: tutor.id, identification: "99999999999" }
+      expect(get_value_from_json("identification")).to_not eql(tutor.identification)
+    end
+
+    it "update tutor email with success" do
+      put :update, params: { id: tutor.id, email: "emailchange@email.com" }
+      expect(get_value_from_json("email")).to_not eql(tutor.email)
+    end
+
+    it "update tutor phone with success" do
+      put :update, params: { id: tutor.id, phone: "0088887777" }
+      expect(get_value_from_json("phone")).to_not eq(tutor.phone)
+    end
+  end
 end
