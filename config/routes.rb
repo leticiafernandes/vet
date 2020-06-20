@@ -7,6 +7,14 @@ Rails.application.routes.draw do
       delete '/destroy/:id', to: 'animals#destroy'
       put '/update/:id', to: 'animals#update'
     end
+
+    namespace :tutor do
+      get 'index', to: 'tutors:index'
+      post 'create', to: 'tutors#create'
+      get '/show/:id', to: 'tutors#show'
+      delete '/destroy/:id', to: 'tutors#destroy'
+      put '/update/:id', to: 'tutors#update'
+    end
   end
   root 'home#index'
   get '/*path' => 'home#index' # redirect requests that doesn’t match the existing routes to home index
