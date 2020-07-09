@@ -3,4 +3,5 @@ class Tutor < ApplicationRecord
     validates :identification, length: { maximum: 11 }
     validates :email, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
     validates :phone, length: { maximum: 11 }
+    has_many :animal
 end
