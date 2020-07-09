@@ -1,11 +1,13 @@
 require 'rails_helper'
 require 'utils'
 require 'date'
+require 'json'
 
 RSpec.describe Api::Animal::AnimalsController, type: :controller do
     let(:animal) { create(:animal) }
     let(:attrs_animal) { attributes_for(:animal) }
-
+    let(:attrs_tutor) { attributes_for(:tutor) }
+    
     describe "GET #index" do
         it "find all animals" do
             get :index
@@ -15,9 +17,15 @@ RSpec.describe Api::Animal::AnimalsController, type: :controller do
     end
 
     describe "POST #create" do 
+        before do
+            attrs_animal[:tutor] = attrs_tutor
+        end
+
         it "create animal successfully with valid attributes" do
             post :create, params: attrs_animal
-            expect(response.body).to_not be_empty
+            result = JSON.parse(response.body)
+            expect(result).to_not be_empty
+            expect(result['tutor_id']).to_not be_nil
             expect(response).to have_http_status(:ok)
         end
 
