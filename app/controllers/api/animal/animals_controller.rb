@@ -6,12 +6,22 @@ class Api::Animal::AnimalsController < ApplicationController
 
   def create
     animal = Animal.create!(animal_params)
+    animal.tutor = handle_association
 
     if animal
       render json: animal
     else
       render json: animal.errors
     end
+  end
+
+  def handle_association
+    @tutor = Tutor.where(:identification => params[:tutor][:identification]).first_or_create do |tutor|
+      tutor.name = params[:tutor][:name]
+      tutor.identification = params[:tutor][:identification]
+      tutor.email = params[:tutor][:email]
+      tutor.phone = params[:tutor][:phone]
+    end    
   end
 
   def show
@@ -40,7 +50,7 @@ class Api::Animal::AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.permit(:name, :birth, :species, :breed)
+    params.permit(:name, :birth, :species, :breed, :tutor)
   end
 
   def animal
